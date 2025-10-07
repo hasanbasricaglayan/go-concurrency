@@ -11,7 +11,12 @@ func main() {
 	// Send messages to the channel
 	ch <- "One"
 	ch <- "Two"
-	close(ch)
+
+	// Need another goroutine to send the third value as the buffer is full
+	go func() {
+		ch <- "Three"
+		close(ch)
+	}()
 
 	// for range ch loop automatically stops when the channel ch is closed
 	for message := range ch {
