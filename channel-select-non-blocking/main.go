@@ -13,14 +13,12 @@ func main() {
 	go func() {
 		time.Sleep(2 * time.Second)
 		fast <- "I'm fast!"
-		close(fast)
 	}()
 
 	// The second goroutine sleeps for 3 seconds and sends "I'm slow!"
 	go func() {
 		time.Sleep(3 * time.Second)
 		slow <- "I'm slow!"
-		close(slow)
 	}()
 
 	// Try to receive before any goroutine sends

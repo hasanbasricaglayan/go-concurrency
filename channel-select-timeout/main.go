@@ -16,8 +16,6 @@ func main() {
 
 		// Send message after delay
 		ch <- "Finally got data!"
-
-		close(ch)
 	}()
 
 	// Use select to either receive from the channel or timeout

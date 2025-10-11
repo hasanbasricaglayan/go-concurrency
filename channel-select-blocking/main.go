@@ -13,14 +13,12 @@ func main() {
 	go func() {
 		time.Sleep(1 * time.Second)
 		fast <- "I'm fast!"
-		close(fast)
 	}()
 
 	// The second goroutine sleeps for 2 seconds and sends "I'm slow!"
 	go func() {
 		time.Sleep(2 * time.Second)
 		slow <- "I'm slow!"
-		close(slow)
 	}()
 
 	// select waits until any one of the channels is ready
